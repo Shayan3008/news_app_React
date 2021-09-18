@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import NavBar from "./components/NavBar";
+import News from "./components/News";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <NavBar name="newsApp" />
+        <Switch>
+          <Route path="/"> <News  key= "home" category="general" /></Route>
+          <Route path="/general"> <News key= "general"  category="general" /></Route>
+          <Route path="/health"> <News key= "health" category="health" /></Route>
+          <Route path="/science"> <News key= "science"  category="science" /></Route>
+          <Route path="/sports"> <News key= "sports"  category="sports" /></Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
